@@ -8,11 +8,36 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
 
+    <!--
+         IMPORTANT: The following permissions should also be added to each project 
+		which uses the DroidAR Library
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:glEsVersion="0x00020000" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- Insert here your google maps API key -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCuve_fHfBVULiamyDdblF_5HaqGkNaUIk" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -23,27 +48,66 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Test1_activity"
-            android:label="@string/title_activity_test1_activity" >
-             <intent-filter>
-            <action android:name="com.example.testar.Test1_activity" />
+            android:name=".MapActivity"
+            android:label="@string/title_map" >
+            <intent-filter>
+                <action android:name="com.example.testar.Test1_activity" />
 
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
-            
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TreesARActivity"
+            android:label="@string/title_ar" >
+            <intent-filter>
+                <action android:name="com.example.testar.Test2_activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
-       
-        <activity
-            android:name=".Test2_activity"
-            android:label="@string/title_activity_test2_activity" >
-              <intent-filter>
-            <action android:name="com.example.testar.Test2_activity" />
+        <!--
+             IMPORTANT: The following activities have to be added to each project 
+			which imports the DroidAR Library
+        -->
 
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
-            
+        <activity
+            android:name="system.ArActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
+        </activity>
+
+        <!-- Custom List is used to easily display lists of any type of object -->
+        <activity android:name="gui.CustomListActivity" >
+        </activity>
+
+        <!-- the error handler will be automatically displayed when an error appears -->
+        <activity
+            android:name="system.ErrorHandler"
+            android:process=":myexeptionprocess"
+            android:taskAffinity="system.ErrorHandler" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <data android:mimeType="errors/myUnhandleCatcher" />
+            </intent-filter>
+        </activity>
+
+        <!-- is needed to display information on application startup -->
+        <activity
+            android:name="gui.InfoScreen"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+
+        <!-- an activity to easily display any kind of ui -->
+        <activity
+            android:name="gui.simpleUI.SimpleUIv1"
+            android:theme="@android:style/Theme.Translucent" >
         </activity>
     </application>
+
 
 </manifest>
