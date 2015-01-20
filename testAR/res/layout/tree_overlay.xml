@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Abre n° 350"/>
+        android:text="Arbre"/>
     
     <View 
         android:layout_height="1dp"
@@ -27,14 +27,14 @@
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
 	        android:layout_gravity="center_horizontal"
-	        android:text="Variété :"
+	        android:text="Id :"
 	        android:textStyle="bold"/>
         
         <TextView 
+            android:id="@+id/tree_id"
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
 	        android:layout_gravity="center_horizontal"
-	        android:text="Sapin"
 	        android:paddingLeft="5dp"/>
         
     </LinearLayout>
@@ -48,14 +48,14 @@
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
 	        android:layout_gravity="center_horizontal"
-	        android:text="Age :"
+	        android:text="Description :"
 	        android:textStyle="bold"/>
         
         <TextView 
+            android:id="@+id/tree_descr"
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
 	        android:layout_gravity="center_horizontal"
-	        android:text="23 ans"
 	        android:paddingLeft="5dp"/>
         
     </LinearLayout>

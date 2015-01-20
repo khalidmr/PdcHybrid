@@ -64,53 +64,8 @@ public class MainActivity extends ActionBarActivity{
 					public void addObjectsTo(GL1Renderer renderer, final World world,
 							GLFactory objectFactory) {
 
-						final GeoObj o = new GeoObj(45.77823,4.875113, 170);
-//						o.setComp(objectFactory.newArrow());
-//						o.setOnClickCommand(new CommandShowToast(context, "Click"));
-//						world.add(o);
-						
-						//show a tree picture at tree location
-						ImageView img = new ImageView(context);
-						img.setImageResource(R.drawable.arbre);
-						MeshComponent mesh = GLFactory.getInstance().newTexturedSquare(
-								"arbre", IO.loadBitmapFromView(img));
-
-						mesh.addChild(new AnimationFaceToCamera(camera, 0.5f));
-						mesh.setScale(new Vec(5, 5, 5));
-
-						final GeoObj tree = new GeoObj(o, mesh);
-						
-						mesh.setOnClickCommand(new CommandInUiThread() {
-							
-							@Override
-							public void executeInUiThread() {
-								//show overlay
-								LayoutInflater inflater = LayoutInflater.from(context); // 1
-								View v = inflater.inflate(R.layout.tree_overlay, null);
-								MeshComponent meshOverlay = GLFactory.getInstance().newTexturedSquare(
-										"overlay", IO.loadBitmapFromView(v));
-								
-								meshOverlay.addChild(new AnimationFaceToCamera(camera, 0.5f));
-								meshOverlay.setScale(new Vec(5, 5, 5));
-								
-								final GeoObj overlay = new GeoObj(o, meshOverlay);
-								meshOverlay.setOnClickCommand(new Command() {
-									
-									@Override
-									public boolean execute() {
-										//remove overlay
-										world.remove(overlay);
-										world.add(tree);
-										return false;
-									}
-								});
-								world.remove(tree);
-								world.add(overlay);
-								}
-						});
-
-						world.add(tree);
-						
+						ArWorld arWorld = new ArWorld(context, world);
+						FollowUserPostion.startFollowing(arWorld);
 					}
 				});
 
