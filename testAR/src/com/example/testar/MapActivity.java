@@ -2,14 +2,20 @@ package com.example.testar;
 
 
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import android.support.v4.util.LongSparseArray;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MapActivity extends ActionBarActivity {
+public class MapActivity extends ActionBarActivity implements DisplayTreeListener{
 	private com.google.android.gms.maps.GoogleMap googleMap = null;
+	private LongSparseArray<Marker> visibleMarkers = new LongSparseArray<Marker>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +25,24 @@ public class MapActivity extends ActionBarActivity {
 		SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 		googleMap = fm.getMap();
 		googleMap.setMyLocationEnabled(true);
+		
+		FollowUserPostion.startFollowing(this);
+	}
+
+	@Override
+	public void addTree(Tree tree) {
+		Marker marker = googleMap.addMarker(new MarkerOptions()
+	     .position(new LatLng(tree.getLatitude(), tree.getLongitude()))
+	     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+		visibleMarkers.put(tree.getId(), marker);
+
+		
+	}
+
+	@Override
+	public void removeTree(long treeId) {
+		visibleMarkers.get(treeId).remove();
+		visibleMarkers.remove(treeId);
 	}
 
 //	@Override

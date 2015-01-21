@@ -64,7 +64,7 @@ public class MainActivity extends ActionBarActivity{
 					public void addObjectsTo(GL1Renderer renderer, final World world,
 							GLFactory objectFactory) {
 
-						ArWorld arWorld = new ArWorld(context, world);
+						ArWorld arWorld = new ArWorld(context, world, camera);
 						FollowUserPostion.startFollowing(arWorld);
 					}
 				});

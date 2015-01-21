@@ -1,6 +1,10 @@
 package com.example.testar;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import geo.GeoObj;
+import gl.GLCamera;
 import gl.GLFactory;
 import gl.animations.AnimationFaceToCamera;
 import gl.scenegraph.MeshComponent;
@@ -8,6 +12,7 @@ import util.IO;
 import util.Vec;
 import worldData.World;
 import android.content.Context;
+import android.support.v4.util.LongSparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,10 +24,14 @@ import commands.ui.CommandInUiThread;
 public class ArWorld implements DisplayTreeListener{
 	private Context context;
 	private World world;
+	private GLCamera camera;
+	private LongSparseArray<GeoObj> visibleTrees;
 
-	public ArWorld(Context context, World world) {
+	public ArWorld(Context context, World world, GLCamera glcamera) {
 		this.context = context;
 		this.world = world;
+		this.camera = glcamera;
+		this.visibleTrees = new LongSparseArray<GeoObj>();
 	}
 
 	@Override
@@ -35,7 +44,7 @@ public class ArWorld implements DisplayTreeListener{
 		MeshComponent mesh = GLFactory.getInstance().newTexturedSquare(
 				"arbre", IO.loadBitmapFromView(img));
 
-		//mesh.addChild(new AnimationFaceToCamera(camera, 0.5f));
+		mesh.addChild(new AnimationFaceToCamera(camera, 0.5f));
 		mesh.setScale(new Vec(5, 5, 5));
 
 		final GeoObj geoObj = new GeoObj(o, mesh);
@@ -55,7 +64,7 @@ public class ArWorld implements DisplayTreeListener{
 				MeshComponent meshOverlay = GLFactory.getInstance().newTexturedSquare(
 						"overlay", IO.loadBitmapFromView(v));
 				
-				//meshOverlay.addChild(new AnimationFaceToCamera(camera, 0.5f));
+				meshOverlay.addChild(new AnimationFaceToCamera(camera, 0.5f));
 				meshOverlay.setScale(new Vec(5, 5, 5));
 				
 				final GeoObj overlay = new GeoObj(o, meshOverlay);
@@ -66,22 +75,28 @@ public class ArWorld implements DisplayTreeListener{
 						//remove overlay
 						world.remove(overlay);
 						world.add(geoObj);
+						visibleTrees.put(tree.getId(), geoObj);
 						return false;
 					}
 				});
 				world.remove(geoObj);
 				world.add(overlay);
-				}
+				visibleTrees.put(tree.getId(), overlay);
+			}
 		});
 
 		world.add(geoObj);
+		visibleTrees.put(tree.getId(), geoObj);
 		
 	}
 
 	@Override
-	public void removeTree(Tree tree) {
-		// TODO Auto-generated method stub
+	public void removeTree(long treeId) {
+		GeoObj geoObj = visibleTrees.get(treeId);
+		world.remove(geoObj);
+		visibleTrees.remove(treeId);
 		
 	}
+
 
 }
