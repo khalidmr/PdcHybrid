@@ -2,66 +2,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="100dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@android:color/white">
-    
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
     <!-- Test (string must be put in string.xml file) -->
-    
-    <TextView 
-        android:layout_height="wrap_content"
+
+    <TextView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Arbre"/>
-    
-    <View 
-        android:layout_height="1dp"
+        android:text="@string/tv_tree_title" />
+
+    <View
         android:layout_width="match_parent"
-        android:background="@android:color/darker_gray"/>
-    
-    <LinearLayout 
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:padding="5dp" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        
-        <TextView 
-	        android:layout_height="wrap_content"
-	        android:layout_width="wrap_content"
-	        android:layout_gravity="center_horizontal"
-	        android:text="Id :"
-	        android:textStyle="bold"/>
-        
-        <TextView 
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_tree_id"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/tree_id"
-	        android:layout_height="wrap_content"
-	        android:layout_width="wrap_content"
-	        android:layout_gravity="center_horizontal"
-	        android:paddingLeft="5dp"/>
-        
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        
-        <TextView 
-	        android:layout_height="wrap_content"
-	        android:layout_width="wrap_content"
-	        android:layout_gravity="center_horizontal"
-	        android:text="Description :"
-	        android:textStyle="bold"/>
-        
-        <TextView 
-            android:id="@+id/tree_descr"
-	        android:layout_height="wrap_content"
-	        android:layout_width="wrap_content"
-	        android:layout_gravity="center_horizontal"
-	        android:paddingLeft="5dp"/>
-        
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
     </LinearLayout>
 
-    
-    
-    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_tree_desc"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tree_descr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:padding="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_tree_lastmsg"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tree_lastmsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

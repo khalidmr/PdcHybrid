@@ -10,5 +10,11 @@
     <string name="welcome">Les arbres du parc de la Tête d\'Or</string>
     <string name="title_ar">Réalité augmentée</string>
     <string name="title_map">Carte</string>
+    
+    <!-- Tree info -->
+    <string name="tv_tree_id">Identifiant :</string>
+    <string name="tv_tree_desc">Description :</string>
+    <string name="tv_tree_lastmsg">Dernier message :</string>
+    <string name="tv_tree_title">Arbre</string>
 
 </resources>

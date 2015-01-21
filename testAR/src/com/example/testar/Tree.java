@@ -1,10 +1,13 @@
 package com.example.testar;
 
+import java.util.ArrayList;
+
 public class Tree {
 	protected Double latitude;
 	protected Double longitude;
 	protected long id;
 	protected String description;
+	protected ArrayList<String> messages = new ArrayList<String>();
 
 	public Tree(Double latitude, Double longitude, long id, String desc) {
 		super();
@@ -12,6 +15,7 @@ public class Tree {
 		this.longitude = longitude;
 		this.id = id;
 		this.description = desc;
+		this.messages.add("Non ergo erunt homines deliciis diffluentes audiendi, si quando de amicitia, quam nec usu nec ratione habent cognitam, disputabunt. Nam quis est, pro deorum fidem atque hominum! ");
 	}
 	
 	public Double getLatitude() {
@@ -28,7 +32,13 @@ public class Tree {
 
 	public String getDescription() {
 		return description;
-	}	
+	}
+
+	public ArrayList<String> getMessages() {
+		return messages;
+	}
+	
+	
 	
 	
 	
