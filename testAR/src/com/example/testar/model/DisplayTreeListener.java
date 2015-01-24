@@ -1,4 +1,5 @@
-package com.example.testar;
+package com.example.testar.model;
+
 
 public interface DisplayTreeListener {
 	public void addTree(Tree tree);

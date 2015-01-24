@@ -1,10 +1,15 @@
-package com.example.testar;
+package com.example.testar.controller;
 
 
 import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.example.testar.R;
+import com.example.testar.R.id;
+import com.example.testar.R.layout;
+import com.example.testar.model.DisplayTreeListener;
+import com.example.testar.model.Tree;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
@@ -31,18 +36,17 @@ public class MapActivity extends ActionBarActivity implements DisplayTreeListene
 	private com.google.android.gms.maps.GoogleMap googleMap = null;
 	private LongSparseArray<Marker> visibleMarkers = new LongSparseArray<Marker>();
 	private HashMap<String, Tree> markerData = new HashMap<String, Tree>();
+	private FollowUserPostion followUserPostion;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
+		followUserPostion = new FollowUserPostion(this);
 		
 		SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 		googleMap = fm.getMap();
-		googleMap.setMyLocationEnabled(true);
-		
-		FollowUserPostion.startFollowing(this);
-		
+		googleMap.setMyLocationEnabled(true);		
 		googleMap.setInfoWindowAdapter(new InfoWindowAdapter() {
 			
 			@Override
@@ -66,6 +70,8 @@ public class MapActivity extends ActionBarActivity implements DisplayTreeListene
 				return v;
 			}
 		});
+		
+		followUserPostion.startFollowing(this);
 	}
 
 	@Override
@@ -86,6 +92,13 @@ public class MapActivity extends ActionBarActivity implements DisplayTreeListene
 		markerData.remove(markerToRemove.getId());
 		markerToRemove.remove();
 		visibleMarkers.remove(treeId);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		
+		followUserPostion.stopFollowing();
 	}
 
 //	@Override

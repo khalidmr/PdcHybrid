@@ -1,7 +1,12 @@
-package com.example.testar;
+package com.example.testar.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.example.testar.R;
+import com.example.testar.R.drawable;
+import com.example.testar.R.id;
+import com.example.testar.R.layout;
 
 import geo.GeoObj;
 import gl.GLCamera;

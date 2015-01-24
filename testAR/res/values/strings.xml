@@ -16,5 +16,13 @@
     <string name="tv_tree_desc">Description :</string>
     <string name="tv_tree_lastmsg">Dernier message :</string>
     <string name="tv_tree_title">Arbre</string>
+    
+    <!-- Common -->
+   	<string name="neutral_button">OK</string>
+    <string name="request_failed">La connexion au seveur a échoué. Merci de vérifier que vous êtes bien connecté à Internet</string>
+    <string name="positive_button">Oui</string>
+    <string name="negative_button">Non</string>
+    <string name="loading">Chargement</string>
+    <string name="gps_disabled">Votre GPS est désactivé, voulez-vous l\'activer ?</string>
 
 </resources>

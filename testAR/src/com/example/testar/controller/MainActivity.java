@@ -1,5 +1,10 @@
-package com.example.testar;
+package com.example.testar.controller;
 
+
+import com.example.testar.R;
+import com.example.testar.R.id;
+import com.example.testar.R.layout;
+import com.example.testar.model.ArWorld;
 
 import geo.GeoObj;
 import gl.Color;
@@ -33,15 +38,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity{
+	private static final int RESULT_AR_ACTIVITY = 0;
 	Context context;
 	Button mapButton;
 	Button arButton;
+	FollowUserPostion followUserPostion;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		context = this;
-
+		followUserPostion = new FollowUserPostion(this);
+		
 		mapButton=(Button)findViewById(R.id.map_button);
 		arButton=(Button)findViewById(R.id.ar_button);
 
@@ -58,20 +66,32 @@ public class MainActivity extends ActionBarActivity{
 				//				Intent myIntentTest2 = new Intent(MainActivity.this,TreesARActivity.class);
 				//				startActivity(myIntentTest2);
 
-				ArActivity.startWithSetup(MainActivity.this, new DefaultARSetup() {
+				ArActivity.startWithSetupForResult(MainActivity.this, new DefaultARSetup() {
 
 					@Override
 					public void addObjectsTo(GL1Renderer renderer, final World world,
 							GLFactory objectFactory) {
 
 						ArWorld arWorld = new ArWorld(context, world, camera);
-						FollowUserPostion.startFollowing(arWorld);
+						followUserPostion.startFollowing(arWorld);
 					}
-				});
+				}, RESULT_AR_ACTIVITY);
 
 			}
 
 		});
+	}
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    // Check which request we're responding to
+	    if (requestCode == RESULT_AR_ACTIVITY) {
+	    	followUserPostion.stopFollowing();
+	    }
+	    
+	    super.onActivityResult(requestCode, resultCode, data);
+
 	}
 
 	//	@Override
