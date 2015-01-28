@@ -1,0 +1,27 @@
+{
+  "name": "LinkedTree",
+  "version": "0.1.2",
+  "description": "A social network in the trees !",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "~4.9.x",
+    "mongoose": "~3.8.21",
+    "body-parser": "~1.10.1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
