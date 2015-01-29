@@ -28,4 +28,20 @@ The server uses HTTP request to execute its services. To call a service, juste s
 
 To see example and a list of all the callable services, please read [the route description](./routes.pdf).
 
+## Description of folders
+
+The server is splitted in three folders : public, node_modules and services.
+ - Public folder contains public informations about nodejs ;
+ - Node_modules folder contains npm modules used by the server ;
+ - Services folder contains all files used by the server to complete services
+
+ ### Services folder
+
+ In this folder we can find four other folders :
+  - database : contains the file that define and launch the database connection, and the data model
+  - network : contains all the services relative to Trees and Messages
+  - route : contain the router of the server, i.e the file that call the services depending of the URL
+  - utils : the habitual utils folder with algorithms and support stuff
+  
+
 
