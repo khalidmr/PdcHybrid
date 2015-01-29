@@ -5,12 +5,12 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="15"
         android:targetSdkVersion="21" />
 
     <!--
          IMPORTANT: The following permissions should also be added to each project 
-		which uses the DroidAR Library
+		which uses the DroidAR Library
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -39,7 +39,7 @@
             android:value="AIzaSyCuve_fHfBVULiamyDdblF_5HaqGkNaUIk" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".controller.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MapActivity"
+            android:name=".controller.MapActivity"
             android:label="@string/title_map" >
             <intent-filter>
                 <action android:name="com.example.testar.Test1_activity" />
@@ -57,18 +57,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TreesARActivity"
-            android:label="@string/title_ar" >
-            <intent-filter>
-                <action android:name="com.example.testar.Test2_activity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            android:name="com.example.testar.controller.TreeActivity"
+            android:label="@string/title_activity_tree"> 
         </activity>
 
         <!--
              IMPORTANT: The following activities have to be added to each project 
-			which imports the DroidAR Library
+			which imports the DroidAR Library
         -->
 
         <activity
@@ -107,7 +102,7 @@
             android:name="gui.simpleUI.SimpleUIv1"
             android:theme="@android:style/Theme.Translucent" >
         </activity>
-    </application>
 
+    </application>
 
 </manifest>

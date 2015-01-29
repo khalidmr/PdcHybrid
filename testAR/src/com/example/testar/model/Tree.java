@@ -6,23 +6,42 @@ public class Tree {
 	protected Double latitude;
 	protected Double longitude;
 	protected long id;
-	protected String description;
+	protected int proximity;
+	protected String name;
+	protected String kind;
+    protected String specy;
+    protected String type;
+    protected String trunk;
+    protected String crown;
+    protected String height;
+	
 	protected ArrayList<String> messages = new ArrayList<String>();
 
-	public Tree(Double latitude, Double longitude, long id, String desc) {
+//	public Tree(Double latitude, Double longitude, long id) {
+//		super();
+//		this.latitude = latitude;
+//		this.longitude = longitude;
+//		this.id = id;
+//		
+//	}
+	
+	public Tree(Double latitude, Double longitude, long id, int proximity,
+			String name, String kind, String specy, String type, String trunk,
+			String crown, String height) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.id = id;
-		this.description = desc;
-		this.messages.add("Non ergo erunt homines deliciis diffluentes audiendi, si quando de amicitia, quam nec usu nec ratione habent cognitam, disputabunt. Nam quis est, pro deorum fidem atque hominum! ");
+		this.proximity = proximity;
+		this.name = name;
+		this.kind = kind;
+		this.specy = specy;
+		this.type = type;
+		this.trunk = trunk;
+		this.crown = crown;
+		this.height = height;
 	}
-	
-	public Tree(Double latitude, Double longitude, long id){
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.id = id;
-	}
+
 	
 	public Double getLatitude() {
 		return latitude;
@@ -36,13 +55,50 @@ public class Tree {
 		return id;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
 	public ArrayList<String> getMessages() {
 		return messages;
 	}
+
+
+	public int getProximity() {
+		return proximity;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public String getKind() {
+		return kind;
+	}
+
+
+	public String getSpecy() {
+		return specy;
+	}
+
+
+	public String getType() {
+		return type;
+	}
+
+
+	public String getTrunk() {
+		return trunk;
+	}
+
+
+	public String getCrown() {
+		return crown;
+	}
+
+
+	public String getHeight() {
+		return height;
+	}
+	
 	
 	
 	
