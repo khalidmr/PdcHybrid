@@ -1,36 +1,31 @@
-# node-js-getting-started
+# LinkedTree
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+This application is the server for the LinkedTree application (see previous folders).
 
-This application support the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+Its goal is to give access to the database services, such as create a tree and send a message.
 
-## Running Locally
+## Installation
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+Make sure you have [Node.js](http://nodejs.org/) installed on your server, and do the following :
 
 ```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
+$ git clone https://github.com/khalidmr/PdcHybrid
+$ cd PdcHybrid/server
 $ npm install
 $ npm start
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+The server should now be running on [localhost:5000](http://localhost:5000/).
 
-## Deploying to Heroku
-
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
+Remember to install the modules mongoose, express and body-parser with :
+```sh
+$ npm install [module] name
 ```
 
-## Documentation
+## Using the server
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
+The server uses HTTP request to execute its services. To call a service, juste send a POST request to the correct URL with all parameters required in JSON format.
 
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+To see example and a list of all the callable services, please read [the route description](./routes.pdf).
+
+
