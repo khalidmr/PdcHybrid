@@ -5,24 +5,45 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="menu">Menu test</string>
-    
+    <string name="title_treeactivity">Messages postés</string>
+
     <!-- MainActivity -->
     <string name="welcome">Les arbres du parc de la Tête d\'Or</string>
     <string name="title_ar">Réalité augmentée</string>
     <string name="title_map">Carte</string>
-    
+
     <!-- Tree info -->
-    <string name="tv_tree_id">Identifiant :</string>
-    <string name="tv_tree_desc">Description :</string>
-    <string name="tv_tree_lastmsg">Dernier message :</string>
+    <string name="tv_tree_id">Arbre n°</string>
+    <string name="tv_tree_type">Type :</string>
+    <string name="tv_tree_specy">Espèce :</string>
+    <string name="tv_tree_name">Nom :</string>
+    <string name="tv_tree_crown">Taille de couronne :</string>
+    <string name="tv_tree_kind">Catégorie :</string>
+    <string name="tv_tree_trunk">Tronc :</string>
+    <string name="tv_tree_height">Hauteur :</string>
     <string name="tv_tree_title">Arbre</string>
+    <string name="tree_showing">Ajout des arbres en cours</string>
     
+
     <!-- Common -->
-   	<string name="neutral_button">OK</string>
+    <string name="neutral_button">OK</string>
     <string name="request_failed">La connexion au seveur a échoué. Merci de vérifier que vous êtes bien connecté à Internet</string>
+    <string name="request_info_failed">Impossible d\'obtenir les informations demandées</string>
     <string name="positive_button">Oui</string>
     <string name="negative_button">Non</string>
-    <string name="loading">Chargement</string>
+    <string name="loading">Chargement...</string>
     <string name="gps_disabled">Votre GPS est désactivé, voulez-vous l\'activer ?</string>
+    <string name="title_activity_tree">TreeActivity</string>
+    <string name="empty_field">Tous les champs doivent être complétés</string>
+    <string name="sending">Envoi en cours...</string>
+    
+    <!-- Message -->
+    <string name="msn_description">Bienvenue sur le mur de cette arbre. Il suffit de remplir les champs ci-dessous pour publier un nouveau message.</string>
+    <string name="publish">Publier</string>
+    <string name="write_msg">Message *</string>
+    <string name="author">Signature *</string>
+    <string name="no_tree">Il n\'y a pas encore de messages sur cet arbre !</string>
+    <string name="post_success">Votre message a bien été publié</string>
+    <string name="post_failed">Votre message n\'a pas pu être publié</string>
 
 </resources>

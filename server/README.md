@@ -19,7 +19,7 @@ The server should now be running on [localhost:5000](http://localhost:5000/).
 
 Remember to install the modules mongoose, express and body-parser with :
 ```sh
-$ npm install [module] name
+$ npm install [module name]
 ```
 
 ## Using the server

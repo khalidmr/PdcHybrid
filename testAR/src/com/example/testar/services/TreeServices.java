@@ -1,10 +1,15 @@
 package com.example.testar.services;
 
 import static com.example.testar.services.Constants.SERVICE_PROXIMITY;
+import static com.example.testar.services.Constants.SERVICE_DETAIL;
+import static com.example.testar.services.Constants.SERVICE_NEW;
+import static com.example.testar.services.Constants.SERVICE_GET;
 import static com.example.testar.services.Constants.URL_BASE;
+import static com.example.testar.services.Constants.URL_MESSAGE;
 import static com.example.testar.services.Constants.URL_TREE;
 import static com.example.testar.services.Constants.PARAMETER_LATITUDE;
 import static com.example.testar.services.Constants.PARAMETER_LONGITUDE;
+import static com.example.testar.services.Constants.PARAMETER_TREE_ID;
 import static com.example.testar.services.Constants.PARAMETER_RADIUS;
 
 import java.util.ArrayList;
@@ -22,6 +27,12 @@ import com.google.gson.JsonObject;
 public class TreeServices {
 	static Gson gson = new Gson();
 	
+	/**
+	 * Get surrounding trees asynchronously
+	 * @param coordinates User location
+	 * @param listener Listener to notify when it is done
+	 * @param radius radius within which retrieve trees
+	 */
 	public static void getClosestTrees(LatLng coordinates, TaskListener listener, int radius)
 	{
 		//build url
@@ -37,36 +48,24 @@ public class TreeServices {
 		RequestExecutor requestExecutor = new RequestExecutor(jsonParams, url, RequestExecutor.RequestType.POST, listener);
 		requestExecutor.execute();
 	}
-
 	
-	/* Snippet to use before calling get
-	 * 		
-		if (paramsNameValue != null)
-	    {
-	    	url+="/?";
-	    	for(int i=0; i<paramsNameValue.size(); i++)
-	    	{
-	    		url+=paramsNameValue.get(i).getName()+"="+paramsNameValue.get(i).getValue();
-	    		if(i<paramsNameValue.size()-1)
-	    		{
-	    			url+="&";
-	    		}
-	    	}
-	    }
+	/**
+	 * Get information about a tree
+	 * @param treeId Id of the tree
+	 * @param listener Listener to notify when it is done
 	 */
-	
-/*	private static JsonArray createJsonArrayCoordinates(List<LatLng> coordinates)
+	public static void getTreeInfo(long treeId, TaskListener listener)
 	{
-		JsonArray coordinatesJson = new JsonArray();
-		for(int i=0 ; i<coordinates.size() ; i++)
-		{
-			LatLng point = coordinates.get(i);
-			JsonObject jsonPoint = new JsonObject();
-			jsonPoint.addProperty(PARAMETER_LATITUDE, String.valueOf(point.latitude));
-			jsonPoint.addProperty(PARAMETER_LONGITUDE, String.valueOf(point.longitude));
-			coordinatesJson.add(jsonPoint);
-		}
-		return coordinatesJson;
-	}*/
+		//build url
+		String url = URL_BASE + URL_TREE + SERVICE_DETAIL;
 
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty(PARAMETER_TREE_ID, String.valueOf(treeId));
+		
+		String jsonParams = gson.toJson(jsonObject);
+		
+		RequestExecutor requestExecutor = new RequestExecutor(jsonParams, url, RequestExecutor.RequestType.POST, listener);
+		requestExecutor.execute();
+	}
+	
 }
